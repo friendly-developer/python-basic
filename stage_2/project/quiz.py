@@ -162,3 +162,8 @@ def start_ipnd_quiz():
     return ''
 
 print start_ipnd_quiz()
+
+'''https://github.com/gvsvarun/IPND/blob/stage-3-ipnd/stage_2/project/fill-in-the-blanks.py
+the link in case its complex to navigate.
+I haven't provided a hard level problem statement, I just reused medium problem statement again.
+Although code is available for all options'''
