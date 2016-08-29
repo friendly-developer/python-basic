@@ -24,36 +24,39 @@ adding ___2___ separated by commas between the parentheses. ___1___s by default 
 don't specify the value to return. ___2___ can be standard data types such as string, number, dictionary,
 tuple, and ___4___ or can be more complicated such as objects and lambda functions.'''
 
-# Yet to determine the problem statements for hard level.
-prob_statement_hard = 'Problem statement 3'
-prob_statement_hard = prob_statement_medium
+prob_statement_hard = '''Automation in coding programs is a key objective of programming.  
+               Automating not only saves the programmer a lot of time but it is also more efficient programming to automate a program.  
+               An example of automation is using conditional statements.  Python uses many operators but __1__ operators compare statements and check if value is true or false.  
+               The __1__ operator __2__ returns True when the expressions on both sides of __2__ are True.   
+               The __1__ operator __3__ returns True when at least one expression on either side of __3__ is True.  
+               The __1__ operator __4__ returns True for False statements and False for True statements.'''
 
 #options particular to each level
 easy = ['World','Python','print','HTML']
 medium = ['function','arguments','None','list']
-hard = []
-# short of problem statements, hence setting it to medium again
-hard = medium
+hard = ['boolean','and','or','not']
 
-# Get a valid input from the user
+
+# Displaying error messages that are applicable if invalid input, and take input from user
 def get_difficulty_input_user():
     print 'Please select a game difficulty by typing it in!'
     valid_input = ''
     invalid_times = 0
-    invalid_input = True    
+    invalid_input = True
+    max_attempts = 4
     while(invalid_input):
-        if invalid_times > 4:
+        if invalid_times > max_attempts:
             print 'You have given five invalid inputs. Please restart the quiz.'
             return
-        if invalid_times > 3:
+        if invalid_times > max_attempts - 1:
             print 'You have given four invalid inputs. This is your last chance'
-        valid_input= raw_input('Avaialable options are '+intro_quiz_options+'. ')
+        valid_input = raw_input('Avaialable options are '+intro_quiz_options+'. ')
         for option in quiz_level_option:
             if option.lower() == valid_input.lower():
                 invalid_input = False
         if invalid_input:
             print('Invalid Option. Please try again')
-            invalid_times +=1
+            invalid_times += 1
     return valid_input    
 
 # Depending on the user difficulty level generate the problem statement
@@ -102,10 +105,13 @@ def generate_options_and_inputs(level,limit,statement):
     elif (level == quiz_level_option[2].lower()):
         options = hard
         last_level = True
-    final_statement = iterate_through_options(options,statement,limit)    
-    print
-    
+    final_statement = iterate_through_options(options,statement,limit)
+    return display_final_messages(final_statement)
+
+# Generate messages for user to determine what has happened finally whether he won or not
+def display_final_messages(final_statement):
     if (final_statement is not None ):
+        print
         print('You Genious. Great Work')
         print 'The correct statement is :'
         print final_statement
@@ -114,7 +120,7 @@ def generate_options_and_inputs(level,limit,statement):
         return 'finish'
     return 
 
-# checking if user input is correct response
+# checking if user input is correct response, if not and displaying the same
 def iterate_through_options(options,statement,limit):    
     error_option = 0
     index = 1
@@ -163,7 +169,8 @@ def start_ipnd_quiz():
 
 print start_ipnd_quiz()
 
-'''https://github.com/gvsvarun/IPND/blob/stage-3-ipnd/stage_2/project/fill-in-the-blanks.py
-the link in case its complex to navigate.
-I haven't provided a hard level problem statement, I just reused medium problem statement again.
-Although code is available for all options'''
+'''https://gist.github.com/anonymous/8401883c0ead6cc7cf6d
+I refered my hard statement from here ^
+I have tried my best for a responsive UI. 
+It would be great if you let me know if there are any sort of performance tweaks that can be done for a better app
+'''
