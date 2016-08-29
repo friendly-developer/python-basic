@@ -7,7 +7,7 @@ quiz_level_option = ['Easy','Medium','Hard']
 intro_statement = 'Hi! Welcome to IPND Python Quiz.'
 intro_quiz_options = ", ".join(quiz_level_option)
 
-prob_statement_easy = '''A common first thing to do in a language is display
+prob_statement_medium = '''A common first thing to do in a language is display
 'Hello ___1___!'  In ___2___ this is particularly easy; all you have to do
 is type in:
 ___3___ "Hello ___1___!"
@@ -19,22 +19,22 @@ It may seem a bit odd to do something in a Turing complete language that
 can be done even more easily with an ___4___ file in a browser, but it's
 a step in learning ___2___ syntax, and that's really its purpose.'''
 
-prob_statement_medium = '''A ___1___ is created with the def keyword. You specify the inputs a ___1___ takes by
+prob_statement_hard = '''A ___1___ is created with the def keyword. You specify the inputs a ___1___ takes by
 adding ___2___ separated by commas between the parentheses. ___1___s by default return ___3___ if you
 don't specify the value to return. ___2___ can be standard data types such as string, number, dictionary,
 tuple, and ___4___ or can be more complicated such as objects and lambda functions.'''
 
-prob_statement_hard = '''Automation in coding programs is a key objective of programming.  
-               Automating not only saves the programmer a lot of time but it is also more efficient programming to automate a program.  
-               An example of automation is using conditional statements.  Python uses many operators but __1__ operators compare statements and check if value is true or false.  
-               The __1__ operator __2__ returns True when the expressions on both sides of __2__ are True.   
-               The __1__ operator __3__ returns True when at least one expression on either side of __3__ is True.  
-               The __1__ operator __4__ returns True for False statements and False for True statements.'''
+prob_statement_easy = '''Automation in coding programs is a key objective of programming.  
+Automating not only saves the programmer a lot of time but it is also more efficient programming to automate a program.  
+An example of automation is using conditional statements.  Python uses many operators but ___1___ operators compare statements and check if value is true or false.  
+The ___1___ operator ___2___ returns True when the expressions on both sides of ___2___ are True.   
+The ___1___ operator ___3___ returns True when at least one expression on either side of ___3___ is True.  
+The ___1___ operator ___4___ returns True for False statements and False for True statements.'''
 
 #options particular to each level
-easy = ['World','Python','print','HTML']
-medium = ['function','arguments','None','list']
-hard = ['boolean','and','or','not']
+medium = ['World','Python','print','HTML']
+hard = ['function','arguments','None','list']
+easy = ['boolean','and','or','not']
 
 
 # Displaying error messages that are applicable if invalid input, and take input from user
@@ -106,11 +106,12 @@ def generate_options_and_inputs(level,limit,statement):
         options = hard
         last_level = True
     final_statement = iterate_through_options(options,statement,limit)
-    return display_final_messages(final_statement)
+    return display_final_messages(final_statement,last_level)
 
 # Generate messages for user to determine what has happened finally whether he won or not
-def display_final_messages(final_statement):
-    if (final_statement is not None ):
+def display_final_messages(final_statement,last_level):
+    print final_statement
+    if (final_statement is not None and final_statement != ''):
         print
         print('You Genious. Great Work')
         print 'The correct statement is :'
@@ -135,7 +136,7 @@ def iterate_through_options(options,statement,limit):
             if (error_option > limit or (error_option == 1 and limit == 1)):
                 print 'You have crossed your self defined limit to answer incorrect options!'
                 print 'This appliccation will exit now. Thanks!'
-                return            
+                return ''          
             elif (error_option > limit-1 or limit == 1):
                 print 'This is your last chance. Please make it count'                
             else:                 
