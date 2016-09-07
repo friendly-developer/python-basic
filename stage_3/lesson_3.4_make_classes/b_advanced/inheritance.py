@@ -19,5 +19,7 @@ class Parent():
 
 class Child(Parent):
     def __init__(self, last_name, eye_color, number_of_toys):
+    	return ''
 
     def show_info(self):
+    	return ''
