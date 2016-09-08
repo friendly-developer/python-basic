@@ -12,14 +12,19 @@ from video_all import Video
 
 class Movie(Video):
     # This class provides a way to store movie related information
-    """ Movie class which takes all info about the movie and displays the trailer"""
-    def __init__(self,title,movie_summary,poster_image_url,trailer_youtube_url,duration):
+    """ Movie class which takes all info about the movie and displays the trailer
+    title: string
+    movie_summary : string
+    poster_image_url : string
+    trailer_youtube_url : string
+    duration:string"""
+    def __init__(self, title, movie_summary, poster_image_url, trailer_youtube_url, duration):
     	# initialize instance of class Movie
-    	Video.__init__(self,title, duration)
+    	Video.__init__(self, title, duration)
     	self.movie_summary = movie_summary
     	self.poster_image_url = poster_image_url
     	self.trailer_youtube_url = trailer_youtube_url
-
+	"""Function to launch youtube trailer for a particular movie """
     def show_trailer():
     	webbrowser.open(self.trailer_youtube_url)
 
